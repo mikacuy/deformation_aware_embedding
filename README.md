@@ -98,15 +98,17 @@ make -j8
 ```
 
 ### Scripts
-Update `SHAPENET_BASEDIR` in `evaluate_fitting_deform_fast.py`, `evaluate.py` and `evaluate_point2mesh`, and select the desired  result directory with flag`--dump_dir` for all the evaluation scripts below.
+Update `SHAPENET_BASEDIR` in `evaluate_fitting_deform_fast.py`, `evaluate.py`, `evaluate_point2mesh` and `evaluate_testrank.py`, and select the desired  result directory with flag`--dump_dir` for all the evaluation scripts below.
 
 Run for fitting error post-deformation:
 ```
 python evaluate_fitting_deform_fast.py --category=chair
 ```
 
-For the ranking evaluation found in our paper, run:
+For the ranking evaluation found in our paper, select the desired model and result directory with flags `--model_path` and `--dump_dir`, and then run:
 ```
+python retrieval_gaussian.py --category=chair --testrank=1
+python evaluate_testrank.py --category=chair
 ```
 
 For fitting error without deformation, run:
