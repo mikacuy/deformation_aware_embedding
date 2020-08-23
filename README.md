@@ -1,7 +1,5 @@
 # Deformation-Aware Embedding
 
-Change data paths in candidate_generation/get_candidates.py and retrieval/chamfer_distance_deformed_candidates.py
-
 ## Data download
 Download h5 files for each object class (chair, table, sofa, car, airplane), and sampled positives and negatives for each model with pre-computed fitting gaps:
 TODO
@@ -117,8 +115,9 @@ python evaluate_point2mesh.py --category=chair --fitting_dump_dir=point2mesh_new
 ```
 
 ## Create your own training samples
-To create your own data by sampling positive and negative samples and pre-computing fitting-gaps:
-Sampling of positives and negatives:
+To create your own data by sampling positive and negative samples and pre-computing fitting-gaps, first change `SHAPENET_BASEDIR` in candidate_generation/get_candidates.py and `POSITIVE_CANDIDATES_FOL` and `NEGATIVE_CANDIDATES_FOL` in retrieval/chamfer_distance_deformed_candidates.py. Then run:
+
+1) Sampling of positives and negatives
 ```
 cd candidate_generation/
 python get_candidates.py --category=chair --data_split=train
@@ -127,7 +126,7 @@ python get_candidates.py --category=chair --data_split=train --generate_negative
 python get_candidates.py --category=chair --data_split=test --generate_negatives=1
 ```
 
-Pre-computing fitting gaps:
+2) Pre-computing fitting gaps
 ```
 cd retrieval/generate_deformed_candidates/
 python chamfer_distance_deformed_candidates.py --category=chair --data_split=train
