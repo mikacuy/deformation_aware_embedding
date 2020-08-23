@@ -1,4 +1,22 @@
-# Deformation-Aware Embedding
+# Deformation-Aware Embedding 3D Model Embedding and Retrieval
+**[Deformation-Aware Embedding 3D Model Embedding and Retrieval](https://deformscan2cad.github.io)** 
+
+Mikaela Angelina Uy, Jingwei Huang, Minhyuk Sung, Tolga Birdal and Leonidas Guibas
+
+ECCV 2020
+
+![pic-network](intro_image.png)
+
+## Introduction
+We introduce a new problem of retrieving 3D models that are deformable to a given query shape and present a novel deep deformation-aware embedding to solve this retrieval task. 3D model retrieval is a fundamental operation for recovering a clean and complete 3D model from a noisy and partial 3D scan. However, given a finite collection of 3D shapes, even the closest model to a query may not be satisfactory. This motivates us to apply 3D model deformation techniques to adapt the retrieved model so as to better fit the query. Yet, certain restrictions are enforced in most 3D deformation techniques to preserve important features of the original model that prevent a perfect fitting of the deformed model to the query. This gap between the deformed model and the query induces asymmetric relationships among the models, which cannot be handled by typical metric learning techniques. Thus, to retrieve the best models for fitting, we propose a novel deep embedding approach that learns the asymmetric relationships by leveraging location-dependent egocentric distance fields. We also propose two strategies for training the embedding network. We demonstrate that both of these approaches outperform other baselines in our experiments with both synthetic and real data. Our project page can be found [here](https://deformscan2cad.github.io), and the arXiv version of our paper can be found [here](https://arxiv.org/abs/2004.01228).
+```
+@inproceedings{uy-deformawareretrieval-eccv20,
+      title = {Deformation-Aware 3D Model Embedding and Retrival},
+      author = {Mikaela Angelina Uy and Jingwei Huang and Minhyuk Sung and Tolga Birdal and Leonidas Guibas},
+      booktitle = {European Conference on Computer Vision (ECCV)},
+      year = {2020}
+  }
+```
 
 ## Data download
 1) Full dataset OBJ files download coming soon.
