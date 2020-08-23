@@ -40,7 +40,7 @@ Select the desired model and result directory with flags `--model_path` and `--d
 python retrieval_gaussian.py --category=chair
 ```
 
-## Comparisons:
+## Baselines:
 ### Ranked-CD:
 1) Retrieval:
 ```
