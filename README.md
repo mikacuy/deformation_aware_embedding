@@ -7,25 +7,35 @@ TODO
 
 Goto `retrieval/` for network training/test.
 
-Construct data for network training/test for both Ours-Margin:
-```
-cd generate_deformed_candidates/
-python arap_triplets.py --category=chair --data_split=train
-```
-
-Construct data for network training/test for both Ours-Reg:
+### Ours-Reg:
+1) Construct data for network training/test for Ours-Reg:
 ```
 cd generate_deformed_candidates/
 python arap_distances.py --category=chair --data_split=train
 python get_object_sigmas.py --category=chair --data_split=train
 ```
+2) Network training:
+```
+python train_ours_distances.py --category=chair
+```
+
+### Ours-Margin:
+1) Construct data for network training/test for Ours-Margin:
+```
+cd generate_deformed_candidates/
+python arap_triplets.py --category=chair --data_split=train
+```
+2) Network training:
+```
+python train_ours_triplet.py --category=chair
+```
 
 Comparisons:
-AE:
+### AE:
 ```
 python train_autoencoder.py --category=chair
 ```
-CD-Triplet:
+### CD-Triplet:
 1) Construct triplets based on chamfer distances. First, update `SHAPENET_BASEDIR` in `generate_deformed_candidates/chamfer_triplets.py`, then run:
 ```
 cd generate_deformed_candidates/
