@@ -1,8 +1,9 @@
 # Deformation-Aware Embedding
 
 ## Data download
-Download h5 files for each object class (chair, table, sofa, car, airplane), and sampled positives and negatives for each model with pre-computed fitting gaps:
-TODO
+Download and extract h5 files for each object class (chair, table, sofa, car, airplane) [here](https://drive.google.com/file/d/1dcThUNexgN5_nmW1Es9GCwuBQi0ITRit/view?usp=sharing), and place all h5 files in `candidate_generation/` 
+
+Download and extract pickle files [here](https://drive.google.com/file/d/15jKM7AHZPuA-GyySSSEWk-lqxQuyCkjY/view?usp=sharing) that contain sampled positives and negatives for each model with pre-computed fitting gaps. Extract this folder in `retrieval/`.
 
 Goto `retrieval/` for training/test of our networks and the baselines.
 
