@@ -225,7 +225,7 @@ for idx, return_code in enumerate(pool.imap(partial(call, shell=True), commands)
 ################
 
 os.system("python evaluate.py --dump_dir=" + (str(DUMP_DIR).encode('ascii', 'ignore')) + " --category="+str(OBJ_CAT))
-os.system("python evaluate_point2mesh.py --dump_dir=" + (str(DUMP_DIR).encode('ascii', 'ignore')) + " --category="+str(OBJ_CAT))
+os.system("python evaluate_point2mesh.py --dump_dir=" + (str(DUMP_DIR).encode('ascii', 'ignore')) + " --category="+ str(OBJ_CAT)+ " --fitting_dump_dir=point2mesh_new2_deform/ --to_deform=1")
 print("Time elapsed: "+str(time.time()-start_time)+" sec.")
 
 

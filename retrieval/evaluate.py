@@ -6,8 +6,6 @@ import json
 import argparse
 import pickle
 libpath = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(libpath + '/../pyRender/lib')
-sys.path.append(libpath + '/../pyRender/src')
 sys.path.append(libpath + '/..')
 import objloader
 import mesh_utils
@@ -72,15 +70,7 @@ parser.add_argument('--category', default='table', help='Which class')
 parser.add_argument('--data_split', default = "test", help='which data split to use')
 
 parser.add_argument('--dump_dir', default='dump_retrieval_table_arap_mahalanobis256_distances_objsigma2/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retrieval_tables_arap_tripletv2/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retrieval_tables_tripletv4_hardnegpos/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retrieval_tables_arap_triplet_v2_pn2_484/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retrieval_tables_arap_triplet2/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retrieval_tables_triplet/', help='dump folder path [dump]')
-# parser.add_argument('--dump_dir', default='dump_retprieval_tables_autoencoder/', help='dump folder path [dump]')
-# 
 parser.add_argument('--fitting_dump_dir', default='best_of_N/', help='dump folder path after fitting')
-# parser.add_argument('--fitting_dump_dir', default='deformation_parallel_newcost_2cd/', help='dump folder path after fitting')
 parser.add_argument('--to_deform', default=True, help='with or without deformation')
 parser.add_argument('--num_neighbors', type=int, default=3, help='Number of neighbors to retrieve')
 
@@ -90,11 +80,6 @@ DATA_SPLIT = FLAGS.data_split
 NUM_NEIGHBORS = FLAGS.num_neighbors
 DUMP_DIR = str(FLAGS.dump_dir)
 print(DUMP_DIR)
-# exit()
-
-if (OBJ_CAT == "car" or OBJ_CAT == "airplane"):
-    with open('../shapenetcore_v2_split2.json') as json_file:
-        data = json.load(json_file)   
 
 FITTING_DUMP_DIR = os.path.join(DUMP_DIR, FLAGS.fitting_dump_dir)
 if not os.path.exists(FITTING_DUMP_DIR): os.mkdir(FITTING_DUMP_DIR)
@@ -103,10 +88,6 @@ LOG_FOUT.write(str(FLAGS)+'\n')
 
 TO_DEFORM = FLAGS.to_deform
 print("Deform "+str(TO_DEFORM))
-
-# if TO_DEFORM:
-# 	print("ERROR. Please run evaluate_fitting_deform.py instead.")
-# 	exit()
 
 def log_string(out_str):
     LOG_FOUT.write(out_str+'\n')
@@ -159,7 +140,7 @@ with tf.Graph().as_default():
 
 	ops = {'pointclouds_pl_1': pointclouds_pl_1,
 	       'pointclouds_pl_2': pointclouds_pl_2,
-	       'chamfer_distance': chamfer_distance,
+	       'chamfer_distance': chamfer_distance
 	        }
 
 	# fname = DATA_SPLIT +"_"+OBJ_CAT+"_meshsampled.h5"
@@ -169,7 +150,8 @@ with tf.Graph().as_default():
 
 	cd_errors = []
 	deformed_pcs = []
-	for i in range(len(model_names)):
+	# for i in range(len(model_names)):
+	for i in range(2):
 		ref_model_name = model_names[i]
 		pc_ref = OBJ_POINTCLOUDS[i]
 		all_pc_ref = []
@@ -226,19 +208,14 @@ with tf.Graph().as_default():
 			pickle.dump(deformed_pcs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 	cd_errors = np.array(cd_errors)
-	# coverage_errors = np.array(coverage_errors)
 	print(cd_errors.shape)
 
 	for i in range(NUM_NEIGHBORS):
 		i_mean_cd = np.mean(cd_errors[:,i])
-		# i_mean_coverage = np.mean(coverage_errors[:,i])
 		log_string("Rank "+ str(i+1) + " retrieved mean CD error: "+str(i_mean_cd))
-		# log_string("Rank "+ str(i+1) + " retrieved mean coverage error: "+str(i_mean_coverage))
 
 	mean_cd = np.mean(np.mean(cd_errors, axis=1))
-	# mean_coverage = np.mean(np.mean(coverage_errors, axis=1))
 	log_string("Average CD error: "+str(mean_cd))
-	# log_string("Average coverage error: "+str(mean_coverage))
 	log_string(" ")
 
 	print(np.min(cd_errors, axis=1).shape)
