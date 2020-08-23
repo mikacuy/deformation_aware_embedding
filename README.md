@@ -25,7 +25,7 @@ We introduce a new problem of retrieving 3D models that are deformable to a give
 
 3) Download and extract pickle files [here](https://drive.google.com/file/d/15jKM7AHZPuA-GyySSSEWk-lqxQuyCkjY/view?usp=sharing) that contain sampled positives and negatives for each model with pre-computed fitting gaps. Extract this folder in `retrieval/`.
 
-Goto `retrieval/` for training/test of our networks and the baselines.
+Goto `retrieval/` for training/test of our networks and the baselines. The code was built and tested with python 2.7 and tensorflow 1.12.0
 
 ## Our Deformation-Aware Embedding
 ### Ours-Reg:
