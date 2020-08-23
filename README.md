@@ -77,7 +77,42 @@ python retrieval.py --category=chair --model=pointnet_triplet
 ```
 
 ## Evaluation of fitting gap (post-deformation chamfer distance)
-First, update `SHAPENET_BASEDIR` in `generate_deformed_candidates/chamfer_triplets.py`, then run:
+### Pre-requisites
+#### Compile deformation function
+In our experiments we chose to use a simplest version of deformation function found [here](https://github.com/hjwdzh/MeshODE). Please follow the installation pre-requisites found in this [repo](https://github.com/hjwdzh/MeshODE) to build.
+```
+cd ../meshdeform
+mkdir build 
+cd build/
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j8
+```
+#### Compile point-to-mesh distance function
+In our paper, we report the point-to-mesh distance for fitting loss (an alternative approximate is to use a point cloud to point cloud distance). To use the point-to-mesh distance metric, first compile the function by running:
+```
+cd ../tools/evaluation
+mkdir build
+cd build/
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j8
+```
+
+### Scripts
+Update `SHAPENET_BASEDIR` in `evaluate_fitting_deform_fast.py`, `evaluate.py` and `evaluate_point2mesh`, and select the desired  result directory with flag`--dump_dir` for all the evaluation scripts below.
+
+Run for fitting error post-deformation:
+```
+python evaluate_fitting_deform_fast.py --category=chair
+```
+
+For the ranking evaluation found in our paper, run:
+```
+```
+
+For fitting error without deformation, run:
+```
+python evaluate_point2mesh.py --category=chair --fitting_dump_dir=point2mesh_new2_nodeform/
+```
 
 ## Create your own training samples
 To create your own data by sampling positive and negative samples and pre-computing fitting-gaps:
