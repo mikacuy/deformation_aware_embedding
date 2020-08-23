@@ -136,7 +136,7 @@ python evaluate_point2mesh.py --category=chair --fitting_dump_dir=point2mesh_new
 ```
 
 ## Pre-trained Models
-Pre-trained models for Ours-Margin and Ours-Reg can be found [here](https://drive.google.com/file/d/1y3A8i1t_eEOizS-Mzvl4fgH_pj4utcfK/view?usp=sharing).
+Pre-trained models for Ours-Margin and Ours-Reg for the five object classes can be found [here](https://drive.google.com/file/d/1y3A8i1t_eEOizS-Mzvl4fgH_pj4utcfK/view?usp=sharing).
 
 ## Create your own training samples
 To create your own data by sampling positive and negative samples and pre-computing fitting-gaps, first change `SHAPENET_BASEDIR` in candidate_generation/get_candidates.py and `POSITIVE_CANDIDATES_FOL` and `NEGATIVE_CANDIDATES_FOL` in retrieval/chamfer_distance_deformed_candidates.py. Then run:
