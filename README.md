@@ -155,3 +155,6 @@ python get_candidates.py --category=chair --data_split=test --generate_negatives
 cd retrieval/generate_deformed_candidates/
 python chamfer_distance_deformed_candidates.py --category=chair --data_split=train
 ```
+
+## License
+This repository is released under MIT License (see LICENSE file for details).
