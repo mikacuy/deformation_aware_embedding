@@ -135,6 +135,9 @@ For fitting error without deformation, run:
 python evaluate_point2mesh.py --category=chair --fitting_dump_dir=point2mesh_new2_nodeform/
 ```
 
+## Pre-trained Models
+To be released soon.
+
 ## Create your own training samples
 To create your own data by sampling positive and negative samples and pre-computing fitting-gaps, first change `SHAPENET_BASEDIR` in candidate_generation/get_candidates.py and `POSITIVE_CANDIDATES_FOL` and `NEGATIVE_CANDIDATES_FOL` in retrieval/chamfer_distance_deformed_candidates.py. Then run:
 
