@@ -19,7 +19,11 @@ We introduce a new problem of retrieving 3D models that are deformable to a give
 ```
 
 ## Data download
-1) Full dataset OBJ files download coming soon.
+1) Dataset downloads can here found here. Please download all the zipped files below.
+ * [ShapeNet Watertight Manifolds](http://download.cs.stanford.edu/orion/deformation_aware_embedding/ShapeNetManifold_simplified.zip) : for `SHAPENET_BASEDIR`.
+ * [Positive Candidates](http://download.cs.stanford.edu/orion/deformation_aware_embedding/manifold_top50_cd_candidates.zip) : for `POSITIVE_CANDIDATES_FOL`.
+ * [Negative Candidates](http://download.cs.stanford.edu/orion/deformation_aware_embedding/manifold_negatives_cd_candidates.zip) : for `NEGATIVE_CANDIDATES_FOL`.
+ * [Ranking Evaluation](http://download.cs.stanford.edu/orion/deformation_aware_embedding/manifold_testrank_candidates.zip) : for the ranking evaluations in the paper.
 
 2) Download and extract h5 files for each object class (chair, table, sofa, car, airplane) [here](https://drive.google.com/file/d/1dcThUNexgN5_nmW1Es9GCwuBQi0ITRit/view?usp=sharing), and place all h5 files in `candidate_generation/` 
 
